@@ -1,0 +1,14 @@
+http:
+  routers:
+    dashboard:
+      rule: Host(`traefik.test`)
+      entryPoints:
+        - websecure
+      service: dashboard@internal
+      tls: true
+    dashboard_api:
+      rule: Host(`traefik.test`) && (PathPrefix(`/api`) || PathPrefix(`/ping`))
+      entryPoints:
+        - websecure
+      service: api@internal
+      tls: true

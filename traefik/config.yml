@@ -1,0 +1,24 @@
+api:
+  insecure: true
+  dashboard: true
+
+entryPoints:
+  web:
+    address: :80
+  websecure:
+    address: :443
+  postgres:
+    address: :5432
+  redis:
+    address: :6379
+providers:
+  docker:
+    exposedByDefault: false
+    network: traefik
+  file:
+    directory: /dynamic
+    watch: true
+
+log:
+  level: INFO
+accessLog: true
