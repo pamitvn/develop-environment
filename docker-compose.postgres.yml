@@ -3,9 +3,8 @@ services:
     container_name: postgres
     image: postgres:latest
     restart: unless-stopped
-    environment:
-      POSTGRES_USER: trustshop
-      POSTGRES_PASSWORD: password
+    env_file:
+      - .env
     volumes:
       - postgres_data:/var/lib/postgresql/data
     networks:
